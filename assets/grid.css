@@ -121,3 +121,12 @@
 .grid-auto-column.max-content {
     grid-auto-columns: max-content;
 }
+
+@media screen and (max-aspect-ratio:1/1){
+    .grid-auto-column.reactive {
+        grid-auto-flow: row;
+    }
+    .grid-auto-row.reactive {
+        grid-auto-flow: column;
+    }
+}

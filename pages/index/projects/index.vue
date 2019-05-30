@@ -6,7 +6,7 @@
       :key="index"
       :to="'/projects/' + project._uid"
     >
-    <img class="thumbnail-img" :src="project.media[0].data[0].data" />
+    <img class="card-img" :src="project.media[0].data[0].data" />
       <div class="card-img-overlay text-light"> 
         <h4>{{project.name}}</h4>
       </div>
@@ -30,19 +30,10 @@ export default {
   height: 200px;
   overflow: hidden;
 }
-  .thumbnail-img{
+  .card-img{
     object-fit:cover;
+    width: 100%;
+    height: 100%;
   }
-
-@media screen and (max-aspect-ratio:1/1) {
-  .thumbnail{
-  width: 100%;
-  height: 200px;
-  }
-
-  .grid-auto-column{
-    grid-auto-flow: row;
-  }
-}
   
 </style>
