@@ -1,10 +1,10 @@
 <template>
   <div class="grid grid-auto-row grid-gap-2">
-    <div class="border-bottom">
+    <div class="border-bottom overflow-hidden" >
       <carousel :perPage="1" :autoplay="true">
         <slide v-for="(item, index) in media" :key="index">
             <img
-        class="img-fluid rounded shadow"
+        class="img-fluid rounded"
         style="background-color:#ddd"
         :src="item.data"
       />
