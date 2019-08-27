@@ -1,4 +1,9 @@
 import pkg from './package'
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: `/${pkg.name}/`
+  }
+} : {}
 
 export default {
   mode: 'spa',
@@ -86,5 +91,6 @@ export default {
     */
     extend(config, ctx) {
     }
-  }
+  },
+  ...routerBase
 }

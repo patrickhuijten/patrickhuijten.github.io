@@ -11,7 +11,9 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "build:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt build",
+    "generate:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt generate"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.13",
@@ -24,10 +26,12 @@
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
     "nuxt-fontawesome": "^0.4.0",
-    "storyblok-nuxt": "^1.0.1"
+    "storyblok-nuxt": "^1.0.1",
+    "vue-carousel": "^0.18.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "push-dir": "^0.4.1"
   },
   "keywords": [],
   "author": "",

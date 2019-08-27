@@ -1,54 +1,83 @@
 <template>
-  <div class="content-container">
+  <div class="grid grid-auto-row grid-gap-2">
     <div class="border-bottom">
-      <img class="img-fluid rounded shadow" style="background-color:#ddd" v-if="media.length > 0" :src="media[0].data">
+      <carousel :perPage="1" :autoplay="true">
+        <slide v-for="(item, index) in media" :key="index">
+            <img
+        class="img-fluid rounded shadow"
+        style="background-color:#ddd"
+        :src="item.data"
+      />
+        </slide>
+      </carousel>
+      
       <div class="col p-3">
-        <h2 v-if="project">{{project.name}}</h2>
+        <h2 v-if="project">
+          {{project.name}}
+          <b-button
+            class="px-0"
+            :disabled="!project.link"
+            :href="project.link"
+            :target="'_blank'"
+            variant="link"
+          >
+            <font-awesome-icon icon="external-link-alt" />
+          </b-button>
+        </h2>
       </div>
     </div>
-    <div class="row">
+    <div class="grid grid-auto-column reactive fr-1 grid-gap-2">
       <div class="col">
         <h5>Project summary</h5>
-        <p v-if="project">{{project.description}}</p>
+        <hr />
+        <p v-if="project" v-html="project.description" />
       </div>
     </div>
-    <div class="row">
-      <div class="col">
+    <div class="grid grid-auto-column reactive fr-1 grid-gap-2">
+      <div class="col" v-if="objectives.length > 0">
         <h5>Objectives</h5>
+        <hr />
+
         <ul>
           <li v-for="(objective, index) in objectives" :key="index">
-            <span>
-              {{objective.value}}
-            </span>
+            <span>{{objective.value}}</span>
           </li>
         </ul>
       </div>
-      <div class="col">
+      <div class="col" v-if="challenges">
         <h5>Challenges</h5>
-        <p v-if="challenges">{{challenges}}</p>
+        <hr />
+        <p >{{challenges}}</p>
       </div>
     </div>
-    <div class="row">
+    <div class="grid grid-auto-column reactive fr-1 grid-gap-2">
       <div class="col">
         <h5>Technologies used</h5>
+        <hr />
+
         <ul>
           <li v-for="(technology, index) in technologies" :key="index">
-            <span>
-              {{technology.value}}
-              <i>{{i}}</i>
-            </span>
+            <span>{{technology.value}}</span>
           </li>
         </ul>
       </div>
-      <div class="col">
+      <div class="col"  v-if="learned">
         <h5>What I've learned</h5>
-        <p v-if="learned">{{learned}}</p>
+        <hr />
+
+        <p>{{learned}}</p>
+        
       </div>
     </div>
   </div>
 </template>
 <script>
+import {Carousel,Slide} from 'vue-carousel';
 export default {
+  components:{
+    Carousel,
+    Slide
+  },
   computed: {
     id() {
       return this.$route.params.id;
@@ -70,7 +99,7 @@ export default {
     technologies() {
       return this.project ? this.project.technologies : [];
     },
-    challenges() {
+    learned() {
       return this.project ? this.project.learned : null;
     }
   }
@@ -85,5 +114,9 @@ export default {
 }
 .content-container {
   grid-auto-flow: row;
+}
+.col {
+  margin: 0;
+  padding: 0;
 }
 </style>
