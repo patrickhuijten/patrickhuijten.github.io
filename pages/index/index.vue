@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-auto-column reactive grid-gap-2" >
     <div class="grid justify-content-center">
-      <img class="img-fluid rounded shadow" width="200px" height="200px" src="/images/profile.jpg">
+      <img class="img-fluid rounded shadow" width="200px" height="200px" src="images/profile.jpg">
     </div>
     <div>
       <h2>Patrick Huijten</h2>
