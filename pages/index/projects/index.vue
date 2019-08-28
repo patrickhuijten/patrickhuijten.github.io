@@ -1,5 +1,5 @@
 <template>
-  <div class="project-container" v-if="projects">
+  <div class="grid-container" v-if="projects">
     <nuxt-link
       class="thumbnail btn bg-transparent card p-0 shadow"
       data-aos="fade-in"
@@ -26,15 +26,6 @@ export default {
 </script>
 
 <style scoped>
-.project-container{
-  display:grid;
-  grid-template-columns: repeat(auto-fill,minmax(240px, 1fr));
-  justify-items: center;
-
-  grid-gap: 1rem;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
 .thumbnail{
   width: 100%;
   height: 240px;

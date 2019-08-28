@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid p-0">
-    <div class="container grid grid-auto-row page py-3" style="align-items: flex-end;">
+    <div class="container grid grid-auto-row page py-3 align-items-end">
       <nuxt-child/>
       <div>
       <vue-navigation/>
@@ -36,7 +36,7 @@ html,
 body {
   width: 100%;
   min-height: 100vh;
-  padding: 0;
+  padding: 0.25rem;
   margin: 0;
 }
 
@@ -46,5 +46,15 @@ body {
 
 .container{
   max-width: 960px;
+}
+
+.grid-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fill,minmax(240px, 1fr));
+  justify-items: center;
+
+  grid-gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 </style>

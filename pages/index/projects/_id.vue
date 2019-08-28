@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-auto-row grid-gap-2">
+  <div class="grid grid-auto-row grid-gap-2 border-bottom mb-3">
     <div class="border-bottom">
       <b-button variant="link" class="text-secondary" style="opacity:0.6" :to="'/projects'">
         <font-awesome-icon icon="chevron-left" class="mr-2" />back to projects
