@@ -1,6 +1,5 @@
 const actions = {
     LoadProjects(context) {
-        console.log(this)
         return this.app.$storyapi
             .get('cdn/stories', {
                 version: 'published',
