@@ -1,5 +1,7 @@
 <template>
-<nuxt-child :projects="projects"/>
+<div>
+<nuxt-child :projects="projects" :key="$route.params.slug"/>
+</div>
 </template>
 <script>
 export default {

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid p-0">
     <div class="container grid grid-auto-row page py-3" style="align-items: flex-end;">
       <nuxt-child/>
       <div>
