@@ -14,16 +14,28 @@
       <div class="col">
         <h2 v-if="project">
           {{project.name}}
+          <b-button-group>
           <b-button
-            class="px-1"
             :disabled="!project.link"
-            size="lg"
             :href="project.link"
             :target="'_blank'"
             variant="link"
+            v-b-tooltip.hover
+            title="Go to live project"
           >
             <font-awesome-icon icon="external-link-alt" />
           </b-button>
+            <b-button
+            :disabled="!project.source"
+            :href="project.source"
+            :target="'_blank'"
+            variant="link"
+            v-b-tooltip.hover
+            title="Go to source repository"
+          >
+            <font-awesome-icon :icon="['fab','github']" />
+          </b-button>
+          </b-button-group>
         </h2>
       </div>
     </div>

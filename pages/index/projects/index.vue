@@ -1,7 +1,7 @@
 <template>
-  <div class="grid-container" v-if="projects">
+  <div class="grid-container"  v-if="projects">
     <nuxt-link
-      class="thumbnail btn bg-transparent card p-0 shadow"
+      class="thumbnail btn bg-transparent card p-0 shadow-sm border-0"
       data-aos="fade-in"
       v-for="(project, index) in projects"
       :key="index"
