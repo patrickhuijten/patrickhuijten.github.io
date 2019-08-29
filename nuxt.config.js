@@ -1,4 +1,6 @@
-import pkg from './package'
+import pkg from './package';
+import routes from './routes.json';
+
 const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
     router: {
         base: `/${pkg.name}/`
@@ -87,6 +89,9 @@ export default {
          ** You can extend webpack config here
          */
         extend(config, ctx) {}
+    },
+    generate: {
+        routes: routes
     },
     ...routerBase
 }

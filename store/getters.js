@@ -1,16 +1,13 @@
 const getters = {
     GetProjects(state) {
-      return state.projects;
+        return state.projects;
     },
     GetRoutes(state) {
-      return state.routes;
+        return state.routes;
     },
     GetCurrentRoute(state) {
-      return state.routes[state.routeIndex];
-    },
-    GetSocialMediaProfiles(state) {
-      return state.socialProfiles;
+        return state.routes[state.routeIndex];
     }
-  }
+}
 
-  export default getters
+export default getters

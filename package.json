@@ -11,9 +11,10 @@
         "dev": "nuxt",
         "build": "nuxt build",
         "start": "nuxt start",
-        "generate": "nuxt generate",
+        "generate-routes": "node routes.js",
+        "generate": "npm run generate-routes && nuxt generate",
         "build:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt build",
-        "generate:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt generate",
+        "generate:gh-pages": "np, run generate-routes && cross-env DEPLOY_ENV=GH_PAGES nuxt generate",
         "deploy": "npm run generate:gh-pages && push-dir --dir=dist --branch=gh-pages --cleanup && rm -rf dist"
     },
     "dependencies": {
@@ -28,6 +29,7 @@
         "cross-env": "^5.2.0",
         "nuxt": "^2.4.0",
         "nuxt-fontawesome": "^0.4.0",
+        "storyblok-js-client": "^2.0.0",
         "storyblok-nuxt": "^1.0.1",
         "vue-carousel": "^0.18.0"
     },
