@@ -55,11 +55,11 @@ export default {
             'nuxt-fontawesome', {
                 imports: [{
                         set: '@fortawesome/free-solid-svg-icons',
-                        icons: ['fas']
+                        icons: ['faExternalLinkAlt', 'faChevronLeft']
                     },
                     {
                         set: '@fortawesome/free-brands-svg-icons',
-                        icons: ['fab']
+                        icons: ['faGithub']
                     }
                 ]
             }
@@ -85,6 +85,7 @@ export default {
      ** Build configuration
      */
     build: {
+        analyze: true,
         /*
          ** You can extend webpack config here
          */
