@@ -14,7 +14,7 @@
         "generate-routes": "node routes.js",
         "generate": "npm run generate-routes && nuxt generate",
         "build:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt build",
-        "generate:gh-pages": "np, run generate-routes && cross-env DEPLOY_ENV=GH_PAGES nuxt generate",
+        "generate:gh-pages": "npm run generate-routes && cross-env DEPLOY_ENV=GH_PAGES nuxt generate",
         "deploy": "npm run generate:gh-pages && push-dir --dir=dist --branch=gh-pages --cleanup && rm -rf dist"
     },
     "dependencies": {
