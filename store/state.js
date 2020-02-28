@@ -5,11 +5,6 @@ export default () => ({
             index: 0,
             name: 'About',
             path: '/'
-        },
-        {
-            index: 1,
-            name: 'Projects',
-            path: '/projects'
         }
     ]
 })
