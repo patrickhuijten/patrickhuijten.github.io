@@ -1,14 +1,9 @@
+require('dotenv').config();
 import pkg from './package';
-import routes from './routes.json';
-
-const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
-    router: {
-        base: `/${pkg.name}/`
-    }
-} : {}
+import axios from 'axios';
 
 export default {
-    mode: 'spa',
+    mode: 'universal',
 
     /*
      ** Headers of the page
@@ -34,11 +29,15 @@ export default {
      ** Global CSS
      */
     css: ['~assets/transitions.css', '~assets/grid.css'],
-
+    styleResources: {
+        scss: [
+            '~/assets/main.scss'
+        ]
+    },
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: ['~plugins/aos.js'],
+    plugins: [{ src: '~plugins/aos.js', mode: 'client' }],
 
     /*
      ** Nuxt.js modules
@@ -54,13 +53,13 @@ export default {
         [
             'nuxt-fontawesome', {
                 imports: [{
-                        set: '@fortawesome/free-solid-svg-icons',
-                        icons: ['faExternalLinkAlt', 'faChevronLeft']
-                    },
-                    {
-                        set: '@fortawesome/free-brands-svg-icons',
-                        icons: ['faGithub']
-                    }
+                    set: '@fortawesome/free-solid-svg-icons',
+                    icons: ['faExternalLinkAlt', 'faChevronLeft']
+                },
+                {
+                    set: '@fortawesome/free-brands-svg-icons',
+                    icons: ['faGithub', 'faLinkedin', 'faFacebook', 'faInstagram', 'faArtstation']
+                }
                 ]
             }
         ],
@@ -68,10 +67,11 @@ export default {
         [
             'storyblok-nuxt',
             {
-                accessToken: 'g5CFQMSQrmW89Cv5MyahyQtt',
+                accessToken: process.env.STORYBLOK_TOKEN,
                 cacheProvider: 'memory'
             }
-        ]
+        ],
+        '@nuxtjs/style-resources'
     ],
 
     /*
@@ -88,10 +88,11 @@ export default {
         /*
          ** You can extend webpack config here
          */
-        extend(config, ctx) {}
+        extend(config, ctx) { }
     },
     generate: {
-        routes: routes
-    },
-    ...routerBase
+        exclude: [
+           /^(?=.*\projects\b).*$/
+       ]
+    }
 }

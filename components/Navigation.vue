@@ -1,12 +1,12 @@
 <template>
-  <div class="grid grid-auto-column justify-content-center grid-gap-2">
+  <nav>
     <nuxt-link
       v-for="(route, index) in routes"
       :key="index"
-      class="text-dark h2"
+      class="nav-link h2"
       :to="route.path"
     >{{route.name}}</nuxt-link>
-  </div>
+  </nav>
 </template>
 <script>
 export default {
@@ -15,5 +15,30 @@ export default {
       return this.$store.getters.GetRoutes;
     }
   }
-}
+};
 </script>
+<style lang="scss" scoped>
+nav {
+  padding-top: 2rem;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+    margin: 0 auto;
+
+  @include desktop-only() {
+    position: fixed;
+    bottom: 2.5rem;
+    left: 0;
+    right: 0;
+  }
+
+  .nav-link {
+    opacity: 0.2;
+    transition: opacity 250ms ease;
+    color: var(--dark);
+    &.nuxt-link-exact-active {
+      opacity: 1;
+    }
+  }
+}
+</style>
