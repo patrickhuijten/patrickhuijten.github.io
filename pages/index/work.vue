@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     currentCompany() {
-      return this.companies[this.index] ?? null;
+      return this.companies[this.index] ? this.companies[this.index] : null;
     },
     period() {
       const start = new moment(new Date(this.currentCompany.start_date)).format(
@@ -80,7 +80,7 @@ export default {
       return richText ? this.$storyapi.richTextResolver.render(richText) : "";
     },
     setIndex(index) {
-      this.index = index;
+]      this.index = index;
     }
   }
 };
