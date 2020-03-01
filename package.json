@@ -1,7 +1,7 @@
 {
     "name": "patrickhuijten.github.io",
     "version": "1.0.0",
-    "description": " Full-Stack Web Developer @ Eli5 Amsterdam, NL",
+    "description": "Full-Stack Web Developer @ Eli5 Amsterdam, NL",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/patrickhuijten/website.git"
@@ -19,6 +19,7 @@
         "@fortawesome/vue-fontawesome": "^0.1.9",
         "@netsells/nuxt-hotjar": "^0.1.2",
         "@nuxtjs/axios": "^5.9.5",
+        "@nuxtjs/sitemap": "^2.0.1",
         "aos": "^2.3.4",
         "axios": "^0.19.2",
         "bootstrap": "^4.4.1",

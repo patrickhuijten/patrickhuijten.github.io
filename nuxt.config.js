@@ -60,6 +60,7 @@ export default {
     modules: [
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
+        '@nuxtjs/sitemap',
         // Doc: https://bootstrap-vue.js.org/docs/
 
         //font awesome

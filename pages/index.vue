@@ -2,7 +2,7 @@
   <div class="page">
     <div class="container">
       <div class="grid">
-        <img class="photo shadow rounded" :src="image" />
+        <img class="photo shadow rounded" :src="image" :alt="name" />
         <div class="title border-bottom">
           <h2 v-text="name" />
           <span class="text-secondary" v-text="subtitle" />
@@ -13,6 +13,7 @@
               :href="profile.url.url"
               target="_blank"
               class="social-item"
+              :aria-label="profile.alt"
             >
               <font-awesome-icon :icon="['fab', profile.icon]" />
             </a>
