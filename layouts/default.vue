@@ -1,7 +1,8 @@
 <template>
   <div class="main container-fluid">
     <nuxt />
-    <VueNavigation />
+
+    <!--<VueNavigation />-->
     <VueFooter />
   </div>
 </template>
@@ -43,7 +44,6 @@ body {
   }
 }
 .container {
-  max-width: 960px;
   padding-right: 0;
   padding-left: 0;
   display: grid;
@@ -57,8 +57,18 @@ body {
     align-content: flex-start;
   }
 }
+.grid {
+  grid-template-columns: 240px 1fr;
+  grid-column-gap: 3rem;
+  grid-row-gap: 2rem;
+
+  @include mobile-only() {
+    grid-template-columns: 1fr;
+  }
+}
 .page {
   width: 100%;
+  min-height: 100vh;
 
   @include mobile-only() {
     align-content: flex-start;

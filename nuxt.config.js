@@ -1,7 +1,5 @@
 require('dotenv').config();
 import pkg from './package';
-import axios from 'axios';
-
 export default {
     mode: 'universal',
 
@@ -9,7 +7,7 @@ export default {
      ** Headers of the page
      */
     head: {
-        title: "Patrick Huijten",
+        title: `Patrick Huijten | ${pkg.description}`,
         htmlAttrs: {
             lang: 'en',
         },
@@ -54,7 +52,7 @@ export default {
     plugins: [{
         src: '~plugins/aos.js',
         mode: 'client'
-    }],
+    }, '~plugins/directives.js'],
 
     /*
      ** Nuxt.js modules
@@ -110,6 +108,9 @@ export default {
      */
     axios: {
         // See https://github.com/nuxt-community/axios-module#options
+        defaults: {
+
+        }
     },
 
     /*
@@ -123,9 +124,9 @@ export default {
         extend(config, ctx) {}
     },
     generate: {
-        fallback: true,
-        exclude: [
-            /^(?=.*\projects\b).*$/
-        ]
-    }
+        fallback: true
+    },
+    exclude: [
+        /^(?=.*\projects\b).*$/
+    ]
 }
