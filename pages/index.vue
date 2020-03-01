@@ -14,6 +14,7 @@
               target="_blank"
               class="social-item"
               :aria-label="profile.alt"
+              rel="noopener noreferrer"
             >
               <font-awesome-icon :icon="['fab', profile.icon]" />
             </a>

@@ -10,6 +10,9 @@ export default {
      */
     head: {
         title: "Patrick Huijten",
+        htmlAttrs: {
+            lang: 'en',
+        },
         meta: [{
                 charset: 'utf-8'
             },
@@ -89,8 +92,7 @@ export default {
             id: process.env.HOTJAR_ID,
             sv: process.env.HOTJAR_SV,
         }],
-        '@nuxtjs/style-resources',
-        'nuxt-purgecss'
+        '@nuxtjs/style-resources'
     ],
     buildModules: [
         ['@nuxtjs/google-analytics', {
