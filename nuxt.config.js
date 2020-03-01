@@ -117,7 +117,6 @@ export default {
         /*
          ** You can extend webpack config here
          */
-        extractCSS: true,
         fallback: true,
         extend(config, ctx) {}
     },
