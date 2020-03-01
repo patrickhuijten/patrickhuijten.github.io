@@ -92,21 +92,17 @@ export default {
         '@nuxtjs/style-resources',
         'nuxt-purgecss'
     ],
-    purgeCSS: {
-        enabled: false,
-        whitelist: ['body', 'html', 'nuxt-progress'],
-        paths: [
-            'bootstrap/dist/css/*.css'
-        ],
-        styleExtensions: ['.css'],
-        extensions: ['html', 'vue', 'js']
-    },
     buildModules: [
         ['@nuxtjs/google-analytics', {
             id: process.env.GOOGLE_ANALYTICS_ID
         }]
     ],
-
+    sitemap: {
+        hostname: process.env.HOSTNAME,
+        exclude: [
+            '/projects'
+        ],
+    },
     /*
      ** Axios module configuration
      */
