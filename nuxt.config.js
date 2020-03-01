@@ -100,19 +100,11 @@ export default {
     sitemap: {
         hostname: process.env.HOSTNAME,
         exclude: [
-            '/projects'
+            '/projects',
+            '/work',
+            '/about'
         ],
     },
-    /*
-     ** Axios module configuration
-     */
-    axios: {
-        // See https://github.com/nuxt-community/axios-module#options
-        defaults: {
-
-        }
-    },
-
     /*
      ** Build configuration
      */
@@ -124,9 +116,13 @@ export default {
         extend(config, ctx) {}
     },
     generate: {
-        fallback: true
+        fallback: true,
+        routes: [
+            '/'
+        ]
     },
     exclude: [
-        /^(?=.*\projects\b).*$/
+        /^(?=.*\work\b).*$/,
+        /^(?=.*\about\b).*$/
     ]
 }

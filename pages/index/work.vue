@@ -13,7 +13,7 @@
             v-for="(company, key) in companies"
             :key="company._uid"
             v-text="company.name"
-            @click="index = key"
+            @click="setIndex(key)"
           />
         </div>
         <div
@@ -39,7 +39,7 @@
               class="responsibility"
               v-for="item in responsibilities"
               :key="item._uid"
-              v-rich-text="item.text"
+              v-html="returnRichText(item.text)"
             />
           </ul>
         </div>
@@ -73,6 +73,14 @@ export default {
     },
     responsibilities() {
       return this.currentCompany.responsibilities || [];
+    }
+  },
+  methods: {
+    returnRichText(richText) {
+      return richText ? this.$storyapi.richTextResolver.render(richText) : "";
+    },
+    setIndex(index) {
+      this.index = index;
     }
   }
 };
