@@ -1,0 +1,20 @@
+@mixin mobile-only {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop-only {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+:root {
+    --background: #fff;
+    --text: #333;
+    @media (prefers-dark-interface) {
+        --background: #333;
+        --text: #fff;
+    }
+}

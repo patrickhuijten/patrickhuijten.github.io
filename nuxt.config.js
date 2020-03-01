@@ -10,25 +10,36 @@ export default {
      */
     head: {
         title: "Patrick Huijten",
-        meta: [
-            { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { hid: 'description', name: 'description', content: pkg.description }
+        meta: [{
+                charset: 'utf-8'
+            },
+            {
+                name: 'viewport',
+                content: 'width=device-width, initial-scale=1'
+            },
+            {
+                hid: 'description',
+                name: 'description',
+                content: pkg.description
+            }
         ],
-        link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-        ]
+        link: [{
+            rel: 'icon',
+            type: 'image/x-icon',
+            href: '/favicon.ico'
+        }]
     },
 
     /*
      ** Customize the progress-bar color
      */
-    loading: { color: '#fff' },
+    loading: {
+        color: '#fff'
+    },
 
     /*
      ** Global CSS
      */
-    css: ['~assets/transitions.css', '~assets/grid.css'],
     styleResources: {
         scss: [
             '~/assets/main.scss'
@@ -37,7 +48,10 @@ export default {
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [{ src: '~plugins/aos.js', mode: 'client' }],
+    plugins: [{
+        src: '~plugins/aos.js',
+        mode: 'client'
+    }],
 
     /*
      ** Nuxt.js modules
@@ -47,19 +61,18 @@ export default {
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
         // Doc: https://bootstrap-vue.js.org/docs/
-        'bootstrap-vue/nuxt',
 
         //font awesome
         [
             'nuxt-fontawesome', {
                 imports: [{
-                    set: '@fortawesome/free-solid-svg-icons',
-                    icons: ['faExternalLinkAlt', 'faChevronLeft']
-                },
-                {
-                    set: '@fortawesome/free-brands-svg-icons',
-                    icons: ['faGithub', 'faLinkedin', 'faFacebook', 'faInstagram', 'faArtstation']
-                }
+                        set: '@fortawesome/free-solid-svg-icons',
+                        icons: ['faExternalLinkAlt', 'faChevronLeft']
+                    },
+                    {
+                        set: '@fortawesome/free-brands-svg-icons',
+                        icons: ['faGithub', 'faLinkedin', 'faFacebook', 'faInstagram', 'faArtstation']
+                    }
                 ]
             }
         ],
@@ -71,7 +84,26 @@ export default {
                 cacheProvider: 'memory'
             }
         ],
-        '@nuxtjs/style-resources'
+        ['@netsells/nuxt-hotjar', {
+            id: process.env.HOTJAR_ID,
+            sv: process.env.HOTJAR_SV,
+        }],
+        '@nuxtjs/style-resources',
+        'nuxt-purgecss'
+    ],
+    purgeCSS: {
+        enabled: false,
+        whitelist: ['body', 'html', 'nuxt-progress'],
+        paths: [
+            'bootstrap/dist/css/*.css'
+        ],
+        styleExtensions: ['.css'],
+        extensions: ['html', 'vue', 'js']
+    },
+    buildModules: [
+        ['@nuxtjs/google-analytics', {
+            id: process.env.GOOGLE_ANALYTICS_ID
+        }]
     ],
 
     /*
@@ -88,11 +120,12 @@ export default {
         /*
          ** You can extend webpack config here
          */
-        extend(config, ctx) { }
+        extractCSS: true,
+        extend(config, ctx) {}
     },
     generate: {
         exclude: [
-           /^(?=.*\projects\b).*$/
-       ]
+            /^(?=.*\projects\b).*$/
+        ]
     }
 }
