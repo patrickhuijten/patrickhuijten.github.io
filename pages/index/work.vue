@@ -80,7 +80,7 @@ export default {
       return richText ? this.$storyapi.richTextResolver.render(richText) : "";
     },
     setIndex(index) {
-]      this.index = index;
+     this.index = index;
     }
   }
 };
