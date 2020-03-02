@@ -152,24 +152,27 @@ export default {
 
   .block {
     grid-area: block;
-    @include mobile-only () {
+    @include mobile-only() {
       padding-top: 2rem;
     }
     > .title {
       display: grid;
-      grid-auto-rows: 50px;
+      grid-auto-rows: 30px;
       grid-template-columns: max-content max-content 1fr;
+      grid-column-gap: 0.5rem;
       grid-template-areas:
         "role name location"
         "period . .";
       .role {
         display: inline;
         grid-area: role;
+        margin: 0;
       }
 
       .name {
         display: inline;
         grid-area: name;
+        margin: 0;
       }
       .location {
         grid-area: location;
@@ -179,19 +182,18 @@ export default {
         grid-area: period;
       }
 
-      .responsibilities {
-        margin-top: 1rem;
-      }
 
       @include mobile-only() {
         grid-template-areas:
           "role name"
           "period location";
 
-          grid-template-columns: max-content 1fr;
-          grid-column-gap: 0.5rem;
+        grid-template-columns: max-content 1fr;
       }
     }
+     .responsibilities {
+        margin-top: 1rem;
+      }
   }
 }
 </style>
