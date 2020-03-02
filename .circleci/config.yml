@@ -8,8 +8,8 @@ jobs:
       tag: '10.4'
     steps:
       - checkout
-      - run: git config --global user.email "$GIT_AUTHOR_EMAIL"
-      - run: git config --global user.name "$GIT_AUTHOR_NAME"
+      - run: git config --global user.email circleci@circleci
+      - run: git config --global user.name CircleCI
       - node/with-cache:
           steps:
             - run: yarn install
