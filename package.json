@@ -11,7 +11,7 @@
         "build": "nuxt build --modern",
         "generate": "nuxt generate",
         "test": "echo 'no test setup'",
-        "deploy": "push-dir --dir=dist --branch=master"
+        "deploy": "git add dist && git commit --reuse-message=HEAD && git subtree push --prefix dist origin master"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.27",
