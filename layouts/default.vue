@@ -69,9 +69,12 @@ body {
 .page {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  align-content: center;
 
   @include mobile-only() {
     align-content: flex-start;
+    padding: 1rem 0;
   }
 }
 *,

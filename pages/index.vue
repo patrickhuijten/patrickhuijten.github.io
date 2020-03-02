@@ -1,11 +1,11 @@
 <template>
-  <div v-if="pages.length > 0">
-    <component data-aos="fade-right" data-aos-duration="1000" v-for="page in pages" :is="page.name" :key="page.uuid" v-bind="page.content" />
+  <div>
+    <component :data-aos="{'fade-right':index > 0}" data-aos-duration="1000" v-for="(page, index) in pages" :is="page.name" :key="page.uuid" v-bind="page.content" />
   </div>
 </template>
 <script>
-import Work from './index/work'
-import About from './index/about'
+import Work from '~/components/pages/work'
+import About from '~/components/pages/about'
 export default {
   components: {
     About, 
