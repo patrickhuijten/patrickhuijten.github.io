@@ -10,6 +10,7 @@
         "dev": "nuxt",
         "build": "nuxt build --modern",
         "generate": "nuxt generate",
+        "test": "echo 'no test setup'",
         "deploy": "push-dir --dir=dist --branch=master"
     },
     "dependencies": {
