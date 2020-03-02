@@ -14,3 +14,9 @@ jobs:
       - run: yarn generate
       - run: yarn test
       - run: yarn deploy
+workflows:
+  version: 2
+  build:
+    jobs:
+      - run-tests:
+          context: patrickhuijten.github.io
