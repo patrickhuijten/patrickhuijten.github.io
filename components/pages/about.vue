@@ -2,7 +2,7 @@
   <div class="page">
     <div class="container">
       <div class="grid">
-        <img class="photo shadow rounded" :src="image" :alt="name" />
+        <img class="photo shadow rounded" :src="image" :alt="name" width="1024px" height="1024px"/>
         <div class="title">
           <h2 v-text="name" />
           <span class="text-secondary" v-text="subtitle" />

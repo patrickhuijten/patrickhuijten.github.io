@@ -30,6 +30,7 @@
               :href="currentCompany.url.url || null"
               v-text="currentCompany.name"
               target="_blank"
+              rel="noopener"
             />
             <small class="location text-secondary" v-text="currentCompany.location" />
             <span class="period text-secondary" v-text="period" />
