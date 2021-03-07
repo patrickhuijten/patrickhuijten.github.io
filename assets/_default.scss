@@ -1,0 +1,8 @@
+* {
+    border-color: var(--border);
+}
+
+::selection {
+    background-color: var(--highlight);
+    color: var(--background);
+}
