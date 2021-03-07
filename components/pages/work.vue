@@ -121,6 +121,7 @@ export default {
     grid-area: index;
     display: grid;
     grid-template-columns: 1fr;
+    grid-auto-rows: 50px;
 
     @include mobile-only() {
       grid-auto-flow: column;
@@ -156,7 +157,6 @@ export default {
     }
     > .title {
       display: grid;
-      grid-auto-rows: 30px;
       grid-template-columns: max-content max-content 1fr;
       grid-column-gap: 0.5rem;
       grid-template-areas:
