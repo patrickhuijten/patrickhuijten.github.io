@@ -121,7 +121,6 @@ export default {
     grid-area: index;
     display: grid;
     grid-template-columns: 1fr;
-    grid-auto-rows: 50px;
 
     @include mobile-only() {
       grid-auto-flow: column;
