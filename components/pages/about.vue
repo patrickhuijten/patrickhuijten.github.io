@@ -2,7 +2,14 @@
   <div class="page">
     <div class="container">
       <div class="grid">
-        <img class="photo shadow rounded" :src="image" :alt="name" width="1024px" height="1024px"/>
+        <img
+          class="photo shadow rounded"
+          :src="image"
+          :alt="name"
+          width="1024px"
+          height="1024px"
+          loading="lazy"
+        />
         <div class="title">
           <h2 v-text="name" />
           <span class="text-secondary" v-text="subtitle" />
@@ -39,12 +46,12 @@ export default {
     },
     richtext() {
       return this.$storyapi.richTextResolver.render(this.paragraph);
-    }
+    },
   },
   components: {
     VueNavigation,
-    VueFooter
-  }
+    VueFooter,
+  },
 };
 </script>
 
@@ -93,7 +100,6 @@ export default {
         object-fit: cover;
         transform: scale(0.5);
         color: var(--highlight) !important;
-        
       }
     }
   }
