@@ -39,15 +39,19 @@ export default {
       return `${this.company.role} @`;
     },
     period() {
-      const startDate = this.company.start_date
-        ? new moment(new Date(this.company.start_date)).format("MMM YYYY")
-        : "...";
-      const endDate = this.company.end_date
-        ? new moment(new Date(this.company.end_date)).format("MMM YYYY")
-        : "...";
-      const current = this.company.current;
+      if (this.company) {
+        const startDate = this.company.start_date
+          ? new moment(new Date(this.company.start_date)).format("MMM YYYY")
+          : "...";
+        const endDate = this.company.end_date
+          ? new moment(new Date(this.company.end_date)).format("MMM YYYY")
+          : "...";
+        const current = this.company.current;
 
-      return `${startDate} - ${current ? "Present" : endDate}`;
+        return `${startDate} - ${current ? "Present" : endDate}`;
+      } else {
+        return '... - ...'
+      }
     },
   },
 };
