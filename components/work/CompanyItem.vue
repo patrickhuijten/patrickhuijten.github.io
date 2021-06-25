@@ -1,7 +1,7 @@
 <template>
   <div class="company">
     <div class="title">
-      <h5 class="role">
+      <span class="role">
         {{ company.role }} @
         <a
           class="name h5"
@@ -10,7 +10,7 @@
           target="_blank"
           rel="noopener"
         />
-      </h5>
+      </span>
 
       <span class="location text-secondary" v-text="company.location" />
       <span class="period text-secondary" v-text="period" />
@@ -39,20 +39,23 @@ export default {
       return `${this.company.role} @`;
     },
     period() {
-      const startDate = new Date(this.company.start_date);
-      const endDate = new Date(this.company.end_date);
+      if (this.company) {
+        const startDate = new Date(this.company.start_date);
+        const endDate = new Date(this.company.end_date);
 
-      const start = new moment(startDate).format("MMM YYYY");
-      const end = new moment(endDate).format("MMM YYYY");
-      const current = this.company.current;
+        const start = new moment(startDate).format("MMM YYYY");
+        const end = new moment(endDate).format("MMM YYYY");
+        const current = this.company.current;
 
-      return `${start} - ${current ? "Present" : end}`;
+        return `${start} - ${current ? "Present" : end}`;
+      } else {
+        return '...'
+      }
     },
   },
 };
 </script>
 <style lang="scss" scoped>
-
 .company {
   width: 100%;
 }
