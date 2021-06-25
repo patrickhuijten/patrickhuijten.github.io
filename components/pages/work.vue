@@ -7,42 +7,20 @@
           <span class="text-secondary" />
         </div>
         <div class="index btn-group-vertical">
+          <div class="scroller" :style="{ '--offset': index }" />
           <button
             class="company"
-            :class="{'active': key === index}"
+            :class="{ active: key === index }"
             v-for="(company, key) in companies"
             :key="company._uid"
             v-text="company.name"
             @click="setIndex(key)"
           />
         </div>
-        <div
-          class="block"
-          v-if="currentCompany"
-          :key="currentCompany._uid"
-          data-aos="fade"
-          data-aos-duration="500"
-        >
-          <div class="title">
-            <div class="role h5" v-text="currentCompany.role + ' @ '" />
-            <a
-              class="name h5"
-              :href="currentCompany.url.url || null"
-              v-text="currentCompany.name"
-              target="_blank"
-              rel="noopener"
-            />
-            <small class="location text-secondary" v-text="currentCompany.location" />
-            <span class="period text-secondary" v-text="period" />
-          </div>
-          <ul class="responsibilities">
-            <li
-              class="responsibility"
-              v-for="item in currentCompany.responsibilities"
-              :key="item._uid"
-              v-rich-text="item.text"
-            />
-          </ul>
+        <div class="block">
+          <transition-group name="list">
+            <CompanyItem :company="currentCompany" :key="currentCompany._uid" />
+          </transition-group>
         </div>
       </div>
     </div>
@@ -50,22 +28,26 @@
 </template>
 <script>
 import moment from "moment";
+import CompanyItem from "@/components/work/CompanyItem";
 export default {
+  components: {
+    CompanyItem,
+  },
   props: {
     title: {
       type: String,
       default: null,
-      immediate: true
+      immediate: true,
     },
     companies: {
       type: Array,
       default: [],
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   data() {
     return {
-      index: 0
+      index: 0,
     };
   },
   computed: {
@@ -86,7 +68,7 @@ export default {
       const current = this.currentCompany.current;
 
       return `${start} - ${current ? "Present" : end}`;
-    }
+    },
   },
   methods: {
     setIndex(index) {
@@ -94,8 +76,8 @@ export default {
       this.$nextTick(() => {
         instance.index = index;
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -105,13 +87,14 @@ export default {
     "title title"
     "index block";
   grid-template-rows: 50px 500px;
+
   @include mobile-only() {
     grid-template-areas:
       "title"
       "index"
       "block";
-    grid-template-rows: 50px 50px max-content !important;
-    grid-row-gap: 0;
+
+    grid-template-rows: 50px 50px 500px;
   }
 
   > .title {
@@ -123,7 +106,22 @@ export default {
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: 50px;
+    position: relative;
 
+    > .scroller {
+      position: absolute;
+      left: 0;
+      width: 2px;
+      height: 50px;
+      background-color: var(--highlight);
+      will-change: transform;
+      transition: var(--transition) ease;
+      transform: translateY(calc(50px * var(--offset)));
+
+      @include mobile-only() {
+        display: none;
+      }
+    }
     @include mobile-only() {
       grid-auto-flow: column;
       grid-auto-columns: max-content;
@@ -131,21 +129,26 @@ export default {
     }
 
     > .company {
+      will-change: transform;
       color: var(--text);
       background: none;
       text-align: left;
-      transition: transform 250ms, color 250ms;
       border-color: var(--border);
-      border-style: solid;
-      border-width: 0 0 0 2px;
-      padding-left: 2rem;
-      @include mobile-only() {
-        border-width: 0 0 2px 0;
-        padding: 0 2rem;
+      padding-left: 20px;
+
+      @include desktop-only() {
+        border: none;
       }
+
+      @include mobile-only() {
+        padding: 0 20px;
+        border-width: 0 0 2px 0;
+        border-color: transparent;
+      }
+
       &.active {
         color: var(--highlight);
-        border-color: var(--hightlight) !important;
+        border-color: var(--highlight);
         font-weight: bold;
       }
     }
@@ -153,47 +156,21 @@ export default {
 
   .block {
     grid-area: block;
-    @include mobile-only() {
-      padding-top: 2rem;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    display: grid;
+    grid-auto-rows: 100%;
+    grid-auto-columns: 100%;
+    position: relative;
+
+    .responsibilities {
+      margin-top: 1rem;
     }
-    > .title {
-      display: grid;
-      grid-template-columns: max-content max-content 1fr;
-      grid-column-gap: 0.5rem;
-      grid-template-areas:
-        "role name location"
-        "period . .";
-      .role {
-        display: inline;
-        grid-area: role;
-        margin: 0;
-      }
 
-      .name {
-        display: inline;
-        grid-area: name;
-        margin: 0;
-      }
-      .location {
-        grid-area: location;
-        text-align: right;
-      }
-      .period {
-        grid-area: period;
-      }
-
-
-      @include mobile-only() {
-        grid-template-areas:
-          "role name"
-          "period location";
-
-        grid-template-columns: max-content 1fr;
-      }
+    .company {
+      position: absolute;
     }
-     .responsibilities {
-        margin-top: 1rem;
-      }
   }
 }
 </style>
