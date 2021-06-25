@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="bio">
-          <div class="paragraph" v-html="richtext" />
+          <div class="paragraph" v-rich-text="paragraph" />
         </div>
       </div>
     </div>
@@ -43,9 +43,6 @@ export default {
   computed: {
     currentRoute() {
       return this.$store.getters.GetCurrentRoute;
-    },
-    richtext() {
-      return this.$storyapi.richTextResolver.render(this.paragraph);
     },
   },
   components: {
