@@ -39,18 +39,15 @@ export default {
       return `${this.company.role} @`;
     },
     period() {
-      if (this.company) {
-        const startDate = new Date(this.company.start_date);
-        const endDate = new Date(this.company.end_date);
+      const startDate = this.company.start_date
+        ? new moment(new Date(this.company.start_date)).format("MMM YYYY")
+        : "...";
+      const endDate = this.company.end_date
+        ? new moment(new Date(this.company.end_date)).format("MMM YYYY")
+        : "...";
+      const current = this.company.current;
 
-        const start = new moment(startDate).format("MMM YYYY");
-        const end = new moment(endDate).format("MMM YYYY");
-        const current = this.company.current;
-
-        return `${start} - ${current ? "Present" : end}`;
-      } else {
-        return '...'
-      }
+      return `${startDate} - ${current ? "Present" : endDate}`;
     },
   },
 };
