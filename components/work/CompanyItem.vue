@@ -1,7 +1,7 @@
 <template>
   <div class="company">
     <div class="title">
-      <span class="role">
+      <span class="role h5">
         {{ company.role }} @
         <a
           class="name h5"
@@ -41,16 +41,17 @@ export default {
     period() {
       if (this.company) {
         const startDate = this.company.start_date
-          ? new moment(new Date(this.company.start_date)).format("MMM YYYY")
+          ? new moment(this.company.start_date).format("MMM YYYY")
           : "...";
+
         const endDate = this.company.end_date
-          ? new moment(new Date(this.company.end_date)).format("MMM YYYY")
+          ? new moment(this.company.end_date).format("MMM YYYY")
           : "...";
         const current = this.company.current;
 
-        return `${startDate} - ${current ? "Present" : endDate}`;
+        return `${startDate} - ${current ? "Present" : endDate}`
       } else {
-        return '... - ...'
+        return "... - ...";
       }
     },
   },
@@ -62,6 +63,8 @@ export default {
 }
 .title {
   margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: var(--border) solid 1px;
   display: grid;
   grid-template-areas:
     "role role"
@@ -73,10 +76,16 @@ export default {
   > .location {
     grid-area: location;
     text-align: left;
+    &::before {
+      content: "📍";
+    }
   }
   > .period {
     grid-area: period;
     text-align: right;
+    &::before {
+      content: "🗓 ";
+    }
   }
 }
 </style>
