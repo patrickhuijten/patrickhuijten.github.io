@@ -1,3 +1,6 @@
 export const renderRichText = (text, storyapi) => {
-    return text ? storyapi.richTextResolver.render(text) : ''
+    let html = text ? storyapi.richTextResolver.render(text) : ''
+
+    html = html.replace('<a ', '<a rel="noreferrer" ')
+    return html
 }
