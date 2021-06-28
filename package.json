@@ -1,6 +1,6 @@
 {
   "name": "patrickhuijten-github-io",
-  "description": "Full-Stack Developer",
+  "description": "Full-Stack Engineer",
   "version": "1.0.0",
   "scripts": {
     "dev": "nuxt",
