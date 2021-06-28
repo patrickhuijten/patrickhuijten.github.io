@@ -65,7 +65,7 @@ export default {
 
       this.scene = new THREE.Scene();
       this.camera.position.z = 125;
-      this.camera.position.y = 75   ;
+      this.camera.position.y = 75;
       this.camera.position.x = 125;
       this.camera.lookAt(this.scene.position);
 
