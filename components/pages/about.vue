@@ -22,6 +22,8 @@
               target="_blank"
               class="social-item"
               :aria-label="profile.alt"
+              :alt="profile.alt"
+              :title="profile.alt"
               rel="noopener noreferrer"
             >
               <font-awesome-icon :icon="['fab', profile.icon]" />
@@ -65,6 +67,11 @@ export default {
     "photo title"
     "photo bio";
 
+  @include desktop-only() {
+    grid-template-columns: 0.33fr 1fr;
+    grid-template-rows: 160px 1fr;
+    min-height: 50%;
+  }
   @include mobile-only() {
     grid-template-areas:
       "title"
@@ -86,10 +93,9 @@ export default {
   }
 }
 .title {
-  background: var(--background);
+  background: var(--panels);
   padding: 20px;
   grid-area: title;
-  border-bottom: 1px solid var(--border);
 
   .social {
     display: grid;
@@ -111,7 +117,7 @@ export default {
 }
 .bio {
   padding: 20px;
-  background: var(--background);
+  background: var(--panels);
   grid-area: bio;
 }
 </style>

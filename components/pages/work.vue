@@ -135,6 +135,10 @@ export default {
       text-align: left;
       border-color: var(--border);
       padding-left: 20px;
+      transition: color 200ms;
+      &:hover {
+        color: var(--highlight);
+      }
 
       @include desktop-only() {
         border: none;
