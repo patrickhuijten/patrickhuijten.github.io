@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <background />
     <div class="container">
       <div class="grid">
         <img
@@ -10,7 +11,7 @@
           height="1024px"
           loading="lazy"
         />
-        <div class="title">
+        <div class="title rounded shadow">
           <h2 v-text="name" />
           <span class="text-secondary" v-text="subtitle" />
           <div class="social">
@@ -27,7 +28,7 @@
             </a>
           </div>
         </div>
-        <div class="bio">
+        <div class="bio rounded shadow">
           <div class="paragraph" v-rich-text="paragraph" />
         </div>
       </div>
@@ -35,6 +36,7 @@
   </div>
 </template>
 <script>
+import Background from "@/components/Background.vue";
 import VueFooter from "~/components/VueFooter.vue";
 import VueNavigation from "~/components/Navigation.vue";
 
@@ -46,6 +48,7 @@ export default {
     },
   },
   components: {
+    Background,
     VueNavigation,
     VueFooter,
   },
@@ -54,6 +57,9 @@ export default {
 
 <style lang="scss" scoped>
 .grid {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
   display: grid;
   grid-template-areas:
     "photo title"
@@ -76,10 +82,12 @@ export default {
   object-position: center 20%;
 
   @include mobile-only() {
-    height: 360px;
+    height: 480px;
   }
 }
 .title {
+  background: var(--background);
+  padding: 20px;
   grid-area: title;
   border-bottom: 1px solid var(--border);
 
@@ -102,6 +110,8 @@ export default {
   }
 }
 .bio {
+  padding: 20px;
+  background: var(--background);
   grid-area: bio;
 }
 </style>

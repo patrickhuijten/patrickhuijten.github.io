@@ -59,8 +59,7 @@ body {
 }
 .grid {
   grid-template-columns: 240px 1fr;
-  grid-column-gap: 3rem;
-  grid-row-gap: 2rem;
+  grid-gap: 20px;
 
   @include mobile-only() {
     grid-template-columns: 1fr;
@@ -71,10 +70,10 @@ body {
   min-height: 100vh;
   display: flex;
   align-content: center;
+  position: relative;
 
   @include mobile-only() {
     align-content: flex-start;
-    padding: 1rem 0;
   }
 }
 *,
